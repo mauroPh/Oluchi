@@ -12,7 +12,7 @@ namespace Oluchi.Controllers
 
         private readonly AgendaService _agendaService;
 
-        public AgendaController(agendaService agendaService)
+        public AgendaController(AgendaService agendaService)
         {
             _agendaService = agendaService;
         }

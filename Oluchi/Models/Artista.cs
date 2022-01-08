@@ -9,7 +9,7 @@ namespace Oluchi.Models
     {
         [Required(ErrorMessage = "{0} Informe um CPF válido")]
         [StringLength(11, ErrorMessage = "O {0} deve conter {1} caracteres")]
-        public int CPF { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "{0} Informe um nome para cadastro")]
         [StringLength(60, MinimumLength = 3, ErrorMessage = "O {0} deve conter no mínimo {2} e no máximo {1} caracteres")]
@@ -45,9 +45,9 @@ namespace Oluchi.Models
         {
         }
 
-        public Artista(int cpf, string nome, string email, string phone, DateTime birthDate, string descricao, Categoria categoria)
+        public Artista(int id, string nome, string email, string phone, DateTime birthDate, string descricao, Categoria categoria)
         {
-            CPF = cpf;
+            Id = id;
             Nome = nome;
             Email = email;
             Phone = phone;

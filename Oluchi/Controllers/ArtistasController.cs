@@ -31,7 +31,7 @@ namespace Oluchi.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var departments = await _categoriaService.FindAllAsync();
+            var categorias = await _categoriaService.FindAllAsync();
             var viewModel = new ArtistaFormViewModel { Categorias =  categorias };
             return View(viewModel);
         }
@@ -42,7 +42,7 @@ namespace Oluchi.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var departments = await _categoriaService.FindAllAsync();
+                var categorias = await _categoriaService.FindAllAsync();
                 var viewModel = new ArtistaFormViewModel { Artista = artista, Categorias = categorias };
                 return View(viewModel);
             }
@@ -101,13 +101,13 @@ namespace Oluchi.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "CPF inválido" });
             }
 
             var obj = await _artistaService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Artista não encontrado" });
             }
 
 
@@ -122,13 +122,13 @@ namespace Oluchi.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var categoria = await _categoriaService.FindAllAsync();
+                var categorias = await _categoriaService.FindAllAsync();
                 var viewModel = new ArtistaFormViewModel { Artista = artista, Categorias = categorias };
                 return View(viewModel);
             }
-            if (id != Artista.Id)
+            if (id != artista.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
+                return RedirectToAction(nameof(Error), new { message = "CPF inválido" });
             }
             try
             {

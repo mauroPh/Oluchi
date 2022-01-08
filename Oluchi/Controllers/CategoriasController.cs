@@ -29,7 +29,7 @@ namespace Oluchi.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Department
+            var categoria = await _context.Categoria
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (categoria == null)
             {

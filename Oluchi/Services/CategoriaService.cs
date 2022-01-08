@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Oluchi.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Oluchi.Models;
 
 namespace Oluchi.Services
 {
@@ -18,11 +17,9 @@ namespace Oluchi.Services
 
         public async Task<List<Categoria>> FindAllAsync()
         {
-            return await _context.Categoria.OrderBy(x => x.Name).ToListAsync();
+            return await _context.Categoria.OrderBy(x => x.NomeCategoria).ToListAsync();
         }
     }
 
-    internal class OluchiContext
-    {
-    }
+   
 }
