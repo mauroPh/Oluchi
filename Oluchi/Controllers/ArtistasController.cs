@@ -32,7 +32,7 @@ namespace Oluchi.Controllers
         public async Task<IActionResult> Create()
         {
             var departments = await _categoriaService.FindAllAsync();
-            var viewModel = new ArtistaFormViewModel { Categorias = categorias };
+            var viewModel = new ArtistaFormViewModel { Categorias =  categorias };
             return View(viewModel);
         }
 

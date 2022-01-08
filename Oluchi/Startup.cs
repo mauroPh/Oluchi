@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Oluchi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,10 @@ namespace Oluchi
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDbContext<OluchiContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("OluchiContext"), builder =>
+builder.MigrationsAssembly("Oluchi")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
