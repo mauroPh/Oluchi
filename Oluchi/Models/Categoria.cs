@@ -7,12 +7,9 @@ namespace Oluchi.Models
 {
     public class Categoria
     {
+
         public int Id { get; set; }
-        public string NomeCategoria { get; set; }
-
-        public string Descricao { get; set; }
-
-        public DateTime DataExposicao { get; set; }
+        public string Nome { get; set; }
 
         public ICollection<Artista> Artistas { get; set; } = new List<Artista>();
 
@@ -20,12 +17,10 @@ namespace Oluchi.Models
         {
         }
 
-        public Categoria(int id, string nomeCategoria, string descricao, DateTime dataExposicao)
+        public Categoria(int id, string nome)
         {
             Id = id;
-            NomeCategoria = nomeCategoria;
-            Descricao = descricao;
-            DataExposicao = dataExposicao;
+            Nome = nome;
         }
 
         public void AddArtista(Artista artista)
@@ -33,11 +28,10 @@ namespace Oluchi.Models
             Artistas.Add(artista);
         }
 
-        public double TotalApresentacoes(DateTime initial, DateTime final)
+        public double Total(DateTime initial, DateTime final)
         {
-            return Artistas.Sum(artista => artista.TotalApresentacoes(initial, final));
+            return Artistas.Sum(artista => artista.Total(initial, final));
         }
-
 
     }
 }

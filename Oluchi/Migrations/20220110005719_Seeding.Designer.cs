@@ -9,8 +9,8 @@ using Oluchi.Models;
 namespace Oluchi.Migrations
 {
     [DbContext(typeof(OluchiContext))]
-    [Migration("20220109040232_Initial")]
-    partial class Initial
+    [Migration("20220110005719_Seeding")]
+    partial class Seeding
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,13 +24,13 @@ namespace Oluchi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("Apresentacoes");
+
                     b.Property<int?>("ArtistaId");
 
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("Local");
-
-                    b.Property<int>("QtdDiasApresentacao");
 
                     b.Property<int>("Status");
 
@@ -44,25 +44,20 @@ namespace Oluchi.Migrations
             modelBuilder.Entity("Oluchi.Models.Artista", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(11);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("BirthDate");
 
                     b.Property<int>("CategoriaId");
 
-                    b.Property<string>("Descricao")
-                        .IsRequired();
-
                     b.Property<string>("Email")
                         .IsRequired();
+
+                    b.Property<int>("Exibicoes");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(60);
-
-                    b.Property<string>("Phone")
-                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -76,11 +71,7 @@ namespace Oluchi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DataExposicao");
-
-                    b.Property<string>("Descricao");
-
-                    b.Property<string>("NomeCategoria");
+                    b.Property<string>("Nome");
 
                     b.HasKey("Id");
 
@@ -90,7 +81,7 @@ namespace Oluchi.Migrations
             modelBuilder.Entity("Oluchi.Models.Agenda", b =>
                 {
                     b.HasOne("Oluchi.Models.Artista", "Artista")
-                        .WithMany("QtdDiasApresentacao")
+                        .WithMany("Apresentacoes")
                         .HasForeignKey("ArtistaId");
                 });
 

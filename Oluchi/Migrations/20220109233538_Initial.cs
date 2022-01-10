@@ -14,9 +14,7 @@ namespace Oluchi.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NomeCategoria = table.Column<string>(nullable: true),
-                    Descricao = table.Column<string>(nullable: true),
-                    DataExposicao = table.Column<DateTime>(nullable: false)
+                    Nome = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,13 +25,12 @@ namespace Oluchi.Migrations
                 name: "Artista",
                 columns: table => new
                 {
-                    Id = table.Column<int>(maxLength: 11, nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(maxLength: 60, nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Phone = table.Column<string>(nullable: false),
                     BirthDate = table.Column<DateTime>(nullable: false),
-                    Descricao = table.Column<string>(nullable: false),
+                    Exibicoes = table.Column<int>(nullable: false),
                     CategoriaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -55,7 +52,7 @@ namespace Oluchi.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Date = table.Column<DateTime>(nullable: false),
                     Local = table.Column<string>(nullable: true),
-                    QtdDiasApresentacao = table.Column<int>(nullable: false),
+                    Apresentacoes = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     ArtistaId = table.Column<int>(nullable: true)
                 },

@@ -1,46 +1,50 @@
-﻿@model Oluchi.Models.ViewModels.ArtistaFormViewModel
+﻿@model Oluchi.Models.Artista
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2>Create</h2>
 
 <h4>Artista</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div asp-validation-summary="All" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Artista.Nome" class="control-label"></label>
-                <input asp-for="Artista.Nome" class="form-control" />
-                <span asp-validation-for="Artista.Nome" class="text-danger"></span>
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Artista.Email" class="control-label"></label>
-                <input asp-for="Artista.Email" class="form-control" />
-                <span asp-validation-for="Artista.Email" class="text-danger"></span>
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Artista.BirthDate" class="control-label"></label>
-                <input asp-for="Artista.BirthDate" class="form-control" />
-                <span asp-validation-for="Artista.BirthDate" class="text-danger"></span>
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Artista.QtdDiasApresentacao" class="control-label"></label>
-                <input asp-for="Artista.QtdDiasApresentacao" class="form-control" />
-                <span asp-validation-for="Artista.QtdDiasApresentacao" class="text-danger"></span>
+                <label asp-for="Exibicoes" class="control-label"></label>
+                <input asp-for="Exibicoes" class="form-control" />
+                <span asp-validation-for="Exibicoes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Artista.CategoriaId" class="control-label"></label>
-                <select asp-for="Artista.CategoriaId" asp-items="@(new SelectList(Model.Categorias,"Id","Nome"))" class="form-control"></select>
+                <label asp-for="CategoriaId" class="control-label"></label>
+                <select asp-for="CategoriaId" class ="form-control" asp-items="ViewBag.CategoriaId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
     </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

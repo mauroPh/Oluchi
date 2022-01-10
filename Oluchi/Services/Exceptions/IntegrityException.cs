@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Oluchi.Services.Exceptions
 {
@@ -10,6 +7,5 @@ namespace Oluchi.Services.Exceptions
         public IntegrityException(string message) : base(message)
         {
         }
-
     }
 }

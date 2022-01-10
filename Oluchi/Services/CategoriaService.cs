@@ -17,7 +17,7 @@ namespace Oluchi.Services
 
         public async Task<List<Categoria>> FindAllAsync()
         {
-            return await _context.Categoria.OrderBy(x => x.NomeCategoria).ToListAsync();
+            return await _context.Categoria.OrderBy(x => x.Nome).ToListAsync();
         }
     }
 

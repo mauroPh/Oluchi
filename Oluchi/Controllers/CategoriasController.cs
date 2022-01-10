@@ -12,17 +12,20 @@ namespace Oluchi.Controllers
     public class CategoriasController : Controller
     {
         private readonly OluchiContext _context;
+
         public CategoriasController(OluchiContext context)
         {
             _context = context;
-                }
+        }
+
         // GET: Categorias
         public async Task<IActionResult> Index()
         {
             return View(await _context.Categoria.ToListAsync());
         }
-        // GET: Categorias/Detalhes/5
-        public async Task<IActionResult> Detalhes(int? id)
+
+        // GET: Categorias/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -39,17 +42,18 @@ namespace Oluchi.Controllers
             return View(categoria);
         }
 
-
-        // GET: Categorias/Criar
-        public IActionResult Criar()
+        // GET: Categorias/Create
+        public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Categorias/Criar
+        // POST: Categorias/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("Id,Nome")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +85,7 @@ namespace Oluchi.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Categoria categoria)
         {
             if (id != categoria.Id)
             {
@@ -110,7 +114,8 @@ namespace Oluchi.Controllers
             }
             return View(categoria);
         }
-        // GET: Categorias/Excluir/5
+
+        // GET: Categorias/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -127,8 +132,9 @@ namespace Oluchi.Controllers
 
             return View(categoria);
         }
-        // POST: Categorias/Excluir/5
-        [HttpPost, ActionName("Excluir")]
+
+        // POST: Categorias/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -142,9 +148,5 @@ namespace Oluchi.Controllers
         {
             return _context.Categoria.Any(e => e.Id == id);
         }
-
-
-
-        //---------------------------------------------//
     }
 }

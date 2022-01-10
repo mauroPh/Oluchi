@@ -1,157 +1,159 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Oluchi.Models;
-using Oluchi.Models.ViewModels;
-using Oluchi.Services;
-using Oluchi.Services.Exceptions;
-
 
 namespace Oluchi.Controllers
 {
     public class ArtistasController : Controller
     {
+        private readonly OluchiContext _context;
 
-        private readonly ArtistaService _artistaService;
-        private readonly CategoriaService _categoriaService;
-
-        public ArtistasController(ArtistaService artistaService, CategoriaService categoriaService)
+        public ArtistasController(OluchiContext context)
         {
-            _artistaService = artistaService;
-            _categoriaService = categoriaService;
+            _context = context;
         }
+
+        // GET: Artistas
         public async Task<IActionResult> Index()
         {
-            var list = await _artistaService.FindAllAsync();
-            return View(list);
+            var oluchiContext = _context.Artista.Include(a => a.Categoria);
+            return View(await oluchiContext.ToListAsync());
         }
 
-        public async Task<IActionResult> Create()
-        {
-            var categorias = await _categoriaService.FindAllAsync();
-            var viewModel = new ArtistaFormViewModel { Categorias =  categorias };
-            return View(viewModel);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Artista artista)
-        {
-            if (!ModelState.IsValid)
-            {
-                var categorias = await _categoriaService.FindAllAsync();
-                var viewModel = new ArtistaFormViewModel { Artista = artista, Categorias = categorias };
-                return View(viewModel);
-            }
-            await _artistaService.InsertAsync(artista);
-            return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
-            }
-
-            var obj = await _artistaService.FindByIdAsync(id.Value);
-            if (obj == null)
-            {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
-            }
-
-            return View(obj);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
-        {
-            try
-            {
-                await _artistaService.RemoveAsync(id);
-                return RedirectToAction(nameof(Index));
-            }
-            catch (IntegrityException e)
-            {
-                return RedirectToAction(nameof(Error), new { message = e.Message });
-            }
-        }
-
+        // GET: Artistas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return NotFound();
             }
 
-            var obj = await _artistaService.FindByIdAsync(id.Value);
-            if (obj == null)
+            var artista = await _context.Artista
+                .Include(a => a.Categoria)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (artista == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return NotFound();
             }
 
-            return View(obj);
+            return View(artista);
         }
 
+        // GET: Artistas/Create
+        public IActionResult Create()
+        {
+            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "Id");
+            return View();
+        }
+
+        // POST: Artistas/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Nome,Email,BirthDate,Exibicoes,CategoriaId")] Artista artista)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(artista);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "Id", artista.CategoriaId);
+            return View(artista);
+        }
+
+        // GET: Artistas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "CPF inválido" });
+                return NotFound();
             }
 
-            var obj = await _artistaService.FindByIdAsync(id.Value);
-            if (obj == null)
+            var artista = await _context.Artista.FindAsync(id);
+            if (artista == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Artista não encontrado" });
+                return NotFound();
             }
-
-
-
-            List<Categoria> categorias = await _categoriaService.FindAllAsync();
-            ArtistaFormViewModel viewModel = new ArtistaFormViewModel { Artista = obj, Categorias = categorias};
-            return View(viewModel);
+            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "Id", artista.CategoriaId);
+            return View(artista);
         }
+
+        // POST: Artistas/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Artista artista)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,BirthDate,Exibicoes,CategoriaId")] Artista artista)
         {
-            if (!ModelState.IsValid)
-            {
-                var categorias = await _categoriaService.FindAllAsync();
-                var viewModel = new ArtistaFormViewModel { Artista = artista, Categorias = categorias };
-                return View(viewModel);
-            }
             if (id != artista.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "CPF inválido" });
+                return NotFound();
             }
-            try
+
+            if (ModelState.IsValid)
             {
-                await _artistaService.UpdateAsync(artista);
+                try
+                {
+                    _context.Update(artista);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ArtistaExists(artista.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch (ApplicationException e)
-            {
-                return RedirectToAction(nameof(Error), new { message = e.Message });
-            }
+            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "Id", artista.CategoriaId);
+            return View(artista);
         }
-        public IActionResult Error(string message)
+
+        // GET: Artistas/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-            var viewModel = new ErrorViewModel
+            if (id == null)
             {
-                Message = message,
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            };
-            return View(viewModel);
+                return NotFound();
+            }
+
+            var artista = await _context.Artista
+                .Include(a => a.Categoria)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (artista == null)
+            {
+                return NotFound();
+            }
+
+            return View(artista);
         }
 
+        // POST: Artistas/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var artista = await _context.Artista.FindAsync(id);
+            _context.Artista.Remove(artista);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
-
-
+        private bool ArtistaExists(int id)
+        {
+            return _context.Artista.Any(e => e.Id == id);
+        }
     }
 }
