@@ -22,16 +22,16 @@ namespace Oluchi.Services
             var result = from obj in _context.Agenda select obj;
             if (minDate.HasValue)
             {
-                result = result.Where(x => x.Date >= minDate.Value);
+                result = result.Where(x => x.Data >= minDate.Value);
             }
             if (maxDate.HasValue)
             {
-                result = result.Where(x => x.Date <= maxDate.Value);
+                result = result.Where(x => x.Data <= maxDate.Value);
             }
             return await result
                 .Include(x => x.Artista)
                 .Include(x => x.Artista.Categoria)
-                .OrderByDescending(x => x.Date)
+                .OrderByDescending(x => x.Data)
                 .ToListAsync();
         }
 
@@ -40,16 +40,16 @@ namespace Oluchi.Services
             var result = from obj in _context.Agenda select obj;
             if (minDate.HasValue)
             {
-                result = result.Where(x => x.Date >= minDate.Value);
+                result = result.Where(x => x.Data >= minDate.Value);
             }
             if (maxDate.HasValue)
             {
-                result = result.Where(x => x.Date <= maxDate.Value);
+                result = result.Where(x => x.Data <= maxDate.Value);
             }
             return await result
                 .Include(x => x.Artista)
                 .Include(x => x.Artista.Categoria)
-                .OrderByDescending(x => x.Date)
+                .OrderByDescending(x => x.Data)
                 .GroupBy(x => x.Artista.Categoria)
                 .ToListAsync();
         }

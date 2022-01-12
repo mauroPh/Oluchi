@@ -10,60 +10,59 @@ namespace Oluchi.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "{0} Informe seu nome")]
+        [Required(ErrorMessage = "{0} Campo obrigatório")]
         [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} deve conter entre {2} e {1} caracteres")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "É necessário informar{0}.")]
-        [EmailAddress(ErrorMessage = "E-mail inválido.")]
+        [Required(ErrorMessage = "{0} Campo obrigatório")]
+        [EmailAddress(ErrorMessage = "Digite um email válido")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "É necessário informar{0}.")]
-        [Display(Name = "Data de nascimento")]
+        [Required(ErrorMessage = "{0} Campo obrigatório")]
+        [Display(Name = "Nascimento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
 
-        [Required(ErrorMessage = "É necessário informar a duração da exibição(Ex: 1 ou 2 dias).")]
-        [Display(Name = "Duração da exibição")]
-        public int Exibicoes{ get; set; }
+        [Required(ErrorMessage = "{0} Campo obrigatório")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} deve estar entre {1} e {2}")]
+        [Display(Name = "Valor Base")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
+        public double ValorBase { get; set; }
 
-        public Categoria Categoria{ get; set; }
+        public Categoria Categoria { get; set; }
         public int CategoriaId { get; set; }
 
-        public ICollection<Agenda> Apresentacoes{ get; set; } = new List<Agenda>();
+        public ICollection<Agenda> Sales { get; set; } = new List<Agenda>();
 
         public Artista()
         {
         }
 
-        public Artista(int id, string nome, string email, DateTime birthDate, int exibicoes, Categoria categoria)
+        public Artista(int id, string nome, string email, DateTime birthDate, double valorBase, Categoria categoria)
         {
             Id = id;
             Nome = nome;
             Email = email;
             BirthDate = birthDate;
-            Exibicoes = exibicoes;
+            ValorBase= valorBase;
             Categoria = categoria;
         }
 
-        public void AddApresentacao (Agenda ag)
+        public void AddSales(Agenda sr)
         {
-            Apresentacoes.Add( ag);
+            Sales.Add(sr);
         }
 
-        public void RemoveApresentacao(Agenda ag)
+        public void RemoveSales(Agenda sr)
         {
-            Apresentacoes.Remove(ag);
+            Sales.Remove(sr);
         }
 
-        public double Total(DateTime initial, DateTime final)
+        public double TotalSales(DateTime initial, DateTime final)
         {
-            return Apresentacoes.Where(ag => ag.Date >= initial && ag.Date <= final).Sum(ag => ag.Apresentacoes);
+            return Sales.Where(sr => sr.Data >= initial && sr.Data <= final).Sum(sr => sr.Quantia);
         }
-
-
-
-
     }
 }

@@ -28,9 +28,9 @@ namespace Oluchi.Models
             Artistas.Add(artista);
         }
 
-        public double Total(DateTime initial, DateTime final)
+        public double TotalSales(DateTime initial, DateTime final)
         {
-            return Artistas.Sum(artista => artista.Total(initial, final));
+            return Artistas.Sum(artista => artista.TotalSales(initial, final));
         }
 
     }
