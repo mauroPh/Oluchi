@@ -13,11 +13,11 @@
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
                 <div class="form-group">
-                    <label for="minDate">Min Date</label>
+                    <label for="minDate">Data Inicial</label>
                     <input type="date" class="form-control" name="minDate" value=@ViewData["minDate"]>
                 </div>
                 <div class="form-group">
-                    <label for="maxDate">Max Date</label>
+                    <label for="maxDate">Data Final</label>
                     <input type="date" class="form-control" name="maxDate" value=@ViewData["maxDate"]>
                 </div>
             </div>
@@ -28,48 +28,46 @@
 
 @foreach (var departmentGroup in Model)
 {
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Categoria @departmentGroup.Key.Nome, Total = @departmentGroup.Key.Total(minDate, maxDate).ToString("F2")</h3>
-        </div>
-        <div class="panel-body">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr class="success">
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Total de Exibições
-                        </th>
-                        <th>
-                            Artista
-                        </th>
-                        <th>
-                            Status
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in departmentGroup)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Date)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Apresentacoes)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Artista.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Department @departmentGroup.Key.Nome, Total sales = @departmentGroup.Key.TotalSales(minDate, maxDate).ToString("F2")</h3>
     </div>
-}
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr class="success">
+                    <th>
+                        Data
+                    </th>
+                    <th>
+                        Valor Arrecadado
+                    </th>
+                    <th>
+                        Artista
+                    </th>
+                    <th>
+                        Exibição confirmada?
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in departmentGroup)
+                {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Data)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Artista.Nome)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+</tr>}
+            </tbody>
+        </table>
+    </div>
+</div>}
