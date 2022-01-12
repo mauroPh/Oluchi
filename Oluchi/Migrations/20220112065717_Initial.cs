@@ -30,7 +30,7 @@ namespace Oluchi.Migrations
                     Nome = table.Column<string>(maxLength: 60, nullable: false),
                     Email = table.Column<string>(nullable: false),
                     BirthDate = table.Column<DateTime>(nullable: false),
-                    Exibicoes = table.Column<int>(nullable: false),
+                    ValorBase = table.Column<double>(nullable: false),
                     CategoriaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -50,9 +50,8 @@ namespace Oluchi.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Local = table.Column<string>(nullable: true),
-                    Apresentacoes = table.Column<int>(nullable: false),
+                    Data = table.Column<DateTime>(nullable: false),
+                    Quantia = table.Column<double>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     ArtistaId = table.Column<int>(nullable: true)
                 },

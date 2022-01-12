@@ -22,13 +22,11 @@ namespace Oluchi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Apresentacoes");
-
                     b.Property<int?>("ArtistaId");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("Data");
 
-                    b.Property<string>("Local");
+                    b.Property<double>("Quantia");
 
                     b.Property<int>("Status");
 
@@ -51,11 +49,11 @@ namespace Oluchi.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<int>("Exibicoes");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(60);
+
+                    b.Property<double>("ValorBase");
 
                     b.HasKey("Id");
 
@@ -79,7 +77,7 @@ namespace Oluchi.Migrations
             modelBuilder.Entity("Oluchi.Models.Agenda", b =>
                 {
                     b.HasOne("Oluchi.Models.Artista", "Artista")
-                        .WithMany("Apresentacoes")
+                        .WithMany("Sales")
                         .HasForeignKey("ArtistaId");
                 });
 

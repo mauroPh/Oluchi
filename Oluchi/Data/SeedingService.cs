@@ -104,17 +104,17 @@ namespace Oluchi.Data
             Agenda ag28 = new Agenda(28, new DateTime(2022, 03, 7),  4000.0, Status.Confirmado, art3);
             Agenda ag29 = new Agenda(29, new DateTime(2022, 03, 23),12000.0, Status.Confirmado, art5);
             Agenda ag30 = new Agenda(30, new DateTime(2022, 03, 12), 5000.0, Status.Confirmado, art2);
-            Agenda ag31= new Agenda(1, new DateTime(2022, 01, 25), 11000.0, Status.Confirmado, art7);
-            Agenda ag32= new Agenda(2, new DateTime(2022, 01, 4), 7000.0, Status.Confirmado, art8);
-            Agenda ag33= new Agenda(3, new DateTime(2022, 01, 13), 4000.0, Status.Cancelado, art10);
-            Agenda ag34= new Agenda(4, new DateTime(2022, 01, 1), 8000.0, Status.Confirmado, art9);
-            Agenda ag35= new Agenda(5, new DateTime(2021, 12, 21), 3000.0, Status.Confirmado, art11);
-            Agenda ag36= new Agenda(6, new DateTime(2021, 12, 15), 2000.0, Status.Confirmado, art12);
-            Agenda ag37= new Agenda(7, new DateTime(2021, 12, 28), 13000.0, Status.Confirmado, art13);
-            Agenda ag38= new Agenda(8, new DateTime(2021, 12, 11), 4000.0, Status.Confirmado, art14);
-            Agenda ag39= new Agenda(9, new DateTime(2021, 12, 14), 11000.0, Status.Pendente, art15);
-            Agenda ag40 = new Agenda(10, new DateTime(2022, 09, 7), 9000.0, Status.Confirmado, art16);
-            Agenda ag41 = new Agenda(1, new DateTime(2022, 01, 25), 11000.0, Status.Confirmado, art17);
+            Agenda ag31= new Agenda(31, new DateTime(2022, 01, 25), 11000.0, Status.Confirmado, art7);
+            Agenda ag32= new Agenda(32, new DateTime(2022, 01, 4), 7000.0, Status.Confirmado, art8);
+            Agenda ag33= new Agenda(33, new DateTime(2022, 01, 13), 4000.0, Status.Cancelado, art10);
+            Agenda ag34= new Agenda(34, new DateTime(2022, 01, 1), 8000.0, Status.Confirmado, art9);
+            Agenda ag35= new Agenda(35, new DateTime(2021, 12, 21), 3000.0, Status.Confirmado, art11);
+            Agenda ag36= new Agenda(36, new DateTime(2021, 12, 15), 2000.0, Status.Confirmado, art12);
+            Agenda ag37= new Agenda(37, new DateTime(2021, 12, 28), 13000.0, Status.Confirmado, art13);
+            Agenda ag38= new Agenda(38, new DateTime(2021, 12, 11), 4000.0, Status.Confirmado, art14);
+            Agenda ag39= new Agenda(39, new DateTime(2021, 12, 14), 11000.0, Status.Pendente, art15);
+            Agenda ag40 = new Agenda(40, new DateTime(2022, 09, 7), 9000.0, Status.Confirmado, art16);
+            Agenda ag41 = new Agenda(41, new DateTime(2022, 01, 25), 11000.0, Status.Confirmado, art17);
             
             _context.Categoria.AddRange(
                 cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, 
