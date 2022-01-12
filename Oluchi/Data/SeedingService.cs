@@ -63,7 +63,7 @@ namespace Oluchi.Data
             Artista art12 = new Artista(12, "Eneida Sanches", "esanches@gmail.com", new DateTime(1989, 5, 4), 7000.0, cat10);
             Artista art13 = new Artista(13, "Gabriel Furmiga", "furmiga@gmail.com", new DateTime(1987, 11, 4), 3500.0, cat11);
             Artista art14 = new Artista(14, "Wilson Tiberio", "wtiber@gmail.com", new DateTime(1996, 8, 4), 300.0, cat12);
-            Artista art15 = new Artista(15, "", "@gmail.com", new DateTime(2002, 3, 4), 2200.0, cat13);
+            Artista art15 = new Artista(15, "Firmino Monteiro", "fmonteiro@gmail.com", new DateTime(2002, 3, 4), 2200.0, cat13);
             Artista art16 = new Artista(16, "Wallace Ferreira", "wferreira@gmail.com", new DateTime(2000, 6, 4), 3500.0, cat2);
             Artista art17 = new Artista(17, "Marcela Bonfim", "mbomfim@gmail.com", new DateTime(1999, 7, 4), 500.0, cat4);
 

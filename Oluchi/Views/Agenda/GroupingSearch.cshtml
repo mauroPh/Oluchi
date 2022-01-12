@@ -21,7 +21,7 @@
                     <input type="date" class="form-control" name="maxDate" value=@ViewData["maxDate"]>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
         </form>
     </div>
 </nav>
@@ -46,7 +46,7 @@
                         Artista
                     </th>
                     <th>
-                        Exibição confirmada?
+                        Status da Exibição
                     </th>
                 </tr>
             </thead>
@@ -58,7 +58,7 @@
         @Html.DisplayFor(modelItem => item.Data)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Quantia)
+        @Html.DisplayFor(modelItem => item.Valor)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Artista.Nome)

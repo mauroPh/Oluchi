@@ -62,7 +62,7 @@ namespace Oluchi.Models
 
         public double TotalSales(DateTime initial, DateTime final)
         {
-            return Sales.Where(sr => sr.Data >= initial && sr.Data <= final).Sum(sr => sr.Quantia);
+            return Sales.Where(sr => sr.Data >= initial && sr.Data <= final).Sum(sr => sr.Valor);
         }
     }
 }
