@@ -15,6 +15,8 @@
     <Compile Remove="Migrations\20220109233538_Initial.Designer.cs" />
     <Compile Remove="Migrations\20220110005719_Seeding.cs" />
     <Compile Remove="Migrations\20220110005719_Seeding.Designer.cs" />
+    <Compile Remove="Migrations\20220112065717_Initial.cs" />
+    <Compile Remove="Migrations\20220112065717_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -26,9 +26,9 @@ namespace Oluchi.Migrations
 
                     b.Property<DateTime>("Data");
 
-                    b.Property<double>("Quantia");
-
                     b.Property<int>("Status");
+
+                    b.Property<double>("Valor");
 
                     b.HasKey("Id");
 

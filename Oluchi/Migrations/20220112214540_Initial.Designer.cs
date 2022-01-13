@@ -9,7 +9,7 @@ using Oluchi.Models;
 namespace Oluchi.Migrations
 {
     [DbContext(typeof(OluchiContext))]
-    [Migration("20220112065717_Initial")]
+    [Migration("20220112214540_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,9 +28,9 @@ namespace Oluchi.Migrations
 
                     b.Property<DateTime>("Data");
 
-                    b.Property<double>("Quantia");
-
                     b.Property<int>("Status");
+
+                    b.Property<double>("Valor");
 
                     b.HasKey("Id");
 

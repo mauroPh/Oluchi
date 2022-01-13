@@ -14,7 +14,7 @@ namespace Oluchi.Models
         public DateTime Data { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:F2}")]
-        public double Quantia { get; set; }
+        public double Valor { get; set; }
         public Status Status { get; set; }
         public Artista Artista { get; set; }
 
@@ -22,11 +22,11 @@ namespace Oluchi.Models
         {
         }
 
-        public Agenda(int id, DateTime data, double quantia, Status status, Artista artista)
+        public Agenda(int id, DateTime data, double valor, Status status, Artista artista)
         {
             Id = id;
             Data = data;
-            Quantia = quantia;
+            Valor = valor;
             Status = status;
             Artista = artista;
         }

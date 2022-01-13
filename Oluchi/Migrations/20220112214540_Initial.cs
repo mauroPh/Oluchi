@@ -51,7 +51,7 @@ namespace Oluchi.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Data = table.Column<DateTime>(nullable: false),
-                    Quantia = table.Column<double>(nullable: false),
+                    Valor = table.Column<double>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     ArtistaId = table.Column<int>(nullable: true)
                 },
