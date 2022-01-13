@@ -3207,7 +3207,7 @@ fieldset[disabled] .btn-default.focus {
   border-color: #ccc;
 }
 .btn-default .badge {
-  color: #fff;
+  color: #000;
   background-color: #333;
 }
 .btn-primary {
@@ -3370,6 +3370,7 @@ fieldset[disabled] .btn-info.focus {
   background-color: #fff;
 }
 .btn-warning {
+    text-decoration:none;
   color: #fff;
   background-color: #f0ad4e;
   border-color: #eea236;
@@ -3426,6 +3427,12 @@ fieldset[disabled] .btn-warning.focus {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #212529;
+    border-color: rgba(255, 255, 255, 0.15);
 }
 .btn-danger:focus,
 .btn-danger.focus {
