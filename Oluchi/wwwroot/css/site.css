@@ -3,13 +3,14 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+   
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left:0px;
+    padding-right: 0px;
 }
 
 /* Carousel */
@@ -36,9 +37,6 @@ body {
     }
 }
 
-.btn-warning {
-    color: #000;
-}
 .card-columns {
     @include media-breakpoint-only(lg) {
         column-count: 4;
@@ -48,7 +46,9 @@ body {
         column-count: 5;
     }
 }
-
+.btn-warning {
+    color: #fff;
+}
 #botao{
     text-decoration: none;
 
@@ -60,10 +60,26 @@ body {
     line-height: 24px;
   
 }
-wrapperLeft {
+.wrapperLeft {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     font-size: 50px;
 }
 
+
+
+.oluchi-cards-eventos{
+    background-color:white;
+    color:black;
+}
+
+
+.oluchi-cards-eventos h2 {
+        color: black;
+    }
+
+oluchi-btn-home {
+    right: 0;
+    left: auto;
+}
