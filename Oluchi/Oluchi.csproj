@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\NovaPasta1\**" />
+    <Compile Remove="Views\NovaPasta\**" />
+    <Content Remove="Views\NovaPasta1\**" />
+    <Content Remove="Views\NovaPasta\**" />
+    <EmbeddedResource Remove="Views\NovaPasta1\**" />
+    <EmbeddedResource Remove="Views\NovaPasta\**" />
+    <None Remove="Views\NovaPasta1\**" />
+    <None Remove="Views\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20220109040232_Initial.cs" />
     <Compile Remove="Migrations\20220109040232_Initial.Designer.cs" />
     <Compile Remove="Migrations\20220109215804_Initial.cs" />
@@ -21,6 +32,13 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\images\banner1.svg" />
+    <Content Remove="wwwroot\images\logo.png" />
+    <Content Remove="wwwroot\images\logo2.png~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Shared\htmlpage.html" />
+    <None Remove="Views\Shared\login.html" />
   </ItemGroup>
 
   <ItemGroup>

@@ -17,6 +17,9 @@
     </environment>
 </head>
 <body>
+
+
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -26,9 +29,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">OLUCHI</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand "><img src="~/images/logo.png" /></a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse justify-content-center">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Início</a></li>
                     <li><a asp-area="" asp-controller="Categorias" asp-action="Index">Categorias</a></li>
@@ -36,11 +39,22 @@
                     <li><a asp-area="" asp-controller="Agenda" asp-action="Index">Agenda</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Eventos</a></li>
+            
                 </ul>
-            </div>
-        </div>
-    </nav>
+               
+            <div class="navbar-right nav navbar-nav">
+                <ul class="nav navbar-nav">
 
+                    <a href="#" class="btn btn-default" _msthash="1061086" _msttexthash="61295">Cadastrar</a>
+                    <a href="../Views/Shared/login.html" class="btn btn-default" _msthash="1061086" _msttexthash="61295">Login</a>
+
+               </ul>
+                </div>
+                </div>
+
+
+</nav>
+                
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">

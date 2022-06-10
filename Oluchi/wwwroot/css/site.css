@@ -53,3 +53,17 @@ body {
     text-decoration: none;
 
 }
+
+.wrapperright {
+    align-items: end;
+    font-size: 20px;
+    line-height: 24px;
+  
+}
+wrapperLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 50px;
+}
+
